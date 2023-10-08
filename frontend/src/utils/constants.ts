@@ -22,14 +22,13 @@ export const userInput: UserInput = {
   },
 };
 
-
 export const candleStickChartOptions = {
   upColor: "#26a69a",
   downColor: "#ef5350",
   borderVisible: false,
   wickUpColor: "#26a69a",
   wickDownColor: "#ef5350",
-}
+};
 
 export const chartOptions = {
   rightPriceScale: {
@@ -45,18 +44,15 @@ export const chartOptions = {
   },
   grid: {
     vertLines: {
-      color: "rgba(42, 46, 57, 0)",
+      color: "#2A2E39",
     },
     horzLines: {
-      color: "rgba(42, 46, 57, 0.6)",
+      color: "rgba(#2A2E39, 0.6)",
     },
   },
 };
 
 export const histogramOptions = {
   color: "#0e3742",
-  priceFormat: {
-    type: "volume",
-  },
   priceScaleId: "",
-}
+};

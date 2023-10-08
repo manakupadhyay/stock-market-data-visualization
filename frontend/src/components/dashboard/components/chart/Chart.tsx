@@ -4,6 +4,7 @@ import { createChart } from "lightweight-charts";
 import {
   candleStickChartOptions,
   chartOptions,
+  histogramOptions,
 } from "../../../../utils/constants";
 import { Candles, CandlesData } from "../../../../utils/types";
 
@@ -23,7 +24,6 @@ const Chart = ({ isLoading, stockData, chartContainerRef }: Props) => {
       chartContainerRef.current
     ) {
       chart.current = createChart(chartContainerRef.current, chartOptions);
-
       const { candles } = stockData;
 
       const candleStickData = candles.map((candle: Candles) => {
@@ -31,7 +31,7 @@ const Chart = ({ isLoading, stockData, chartContainerRef }: Props) => {
           time:
             stockData.period === "daily"
               ? candle[0]
-              : new Date(candle[0]).getTime(),
+              : new Date(candle[0]).getTime() / 1000,
           open: candle[1],
           high: candle[2],
           low: candle[3],
@@ -43,7 +43,7 @@ const Chart = ({ isLoading, stockData, chartContainerRef }: Props) => {
         time:
           stockData.period === "daily"
             ? candle[0]
-            : new Date(candle[0]).getTime(),
+            : new Date(candle[0]).getTime() / 1000,
         value: candle[5],
       }));
 
@@ -54,13 +54,11 @@ const Chart = ({ isLoading, stockData, chartContainerRef }: Props) => {
       // @ts-ignore
       candlestickSeries.setData(candleStickData);
 
-      const histogramSeries = chart.current.addHistogramSeries({
-        color: "#0e3742",
-        priceFormat: {
-          type: "volume",
-        },
-        priceScaleId: "",
-      });
+      const histogramSeries =
+        chart.current.addHistogramSeries(histogramOptions);
+
+      // @ts-ignore
+      histogramSeries.setData(volumeData);
 
       chart.current.priceScale("").applyOptions({
         scaleMargins: {
@@ -68,10 +66,6 @@ const Chart = ({ isLoading, stockData, chartContainerRef }: Props) => {
           bottom: 0,
         },
       });
-
-      // @ts-ignore
-      histogramSeries.setData(volumeData);
-
       chart.current.timeScale().fitContent();
     }
   }, [stockData]);
