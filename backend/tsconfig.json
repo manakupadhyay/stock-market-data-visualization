@@ -8,7 +8,7 @@
       "moduleResolution": "node",
       "sourceMap": true,
       "outDir": "./dist",
-      "rootDir": "./src",
+      "rootDir": ".",
       "baseUrl": ".",
       "paths": {
           "*": [
@@ -17,6 +17,7 @@
       }
   },
   "include": [
-      "src/**/*"
+      "src/**/*",
+      "api/*",
   ]
 }
