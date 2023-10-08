@@ -1,98 +1,105 @@
 :root {
   --h4_text: 18px;
-}
-
-.app {
+  --primary_color: #282c34;
+  --space_large: 30px; 
+  --space_medium: 20px;
+  --space_small: 10px
 }
 
 .header {
-  background-color: #282c34;
+  background-color: var(--primary_color);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   color: white;
 }
+
 .header > h2 {
   text-align: center;
 }
 
 .dashboard-container {
-  /* min-height: 100vh; */
   display: flex;
-  gap: 30px;
-  /* width: 100%; */
+  gap: var(--space_large);
   text-align: center;
   flex-direction: column;
-    align-items: center;
-    padding: 10px;
+  align-items: center;
+  padding: var(--space_small);
+  padding-top: var(--space_medium);
 }
 
-.search-container {
-  padding: 10px;
+.dashboard-container > .search-container {
+  padding: var(--space_small);;
   font-size: var(--h4_text);
   box-shadow: 3px 12px 23px -2px rgba(0,0,0,0.3);
-  
-  border-radius: 10px;
+  border-radius: var(--space_small);;
 }
 
-.input-container {
-  margin-top: 30px;
+.search-container > .input-container {
+  margin-top: var(--space_large);
   display: flex;
-  gap: 20px;
+  gap: var(--space_medium);
   flex-direction: column;
-  padding: 10px;
+  padding: var(--space_small);;
 }
 
 .input-container > div >  button {
-    font-size: 16px;
-    font-weight: 400;
-    padding: 10px 28px;
-    cursor: pointer;
-    transition-duration: 0.4s;
-    line-height: 1;
-    background: #282c34;
-    border-color: #282c34;
-    color: white;
-    border-radius: 5px;
+  font-size: 16px;
+  font-weight: 400;
+  padding: var(--space_small) 28px;
+  cursor: pointer;
+  transition-duration: 0.4s;
+  line-height: 1;
+  background: var(--primary_color);
+  border-color: var(--primary_color);
+  color: white;
+  border-radius: 5px;
 }
+
 .input-container > div >  button:hover {
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
-.dropdown {
+
+.input-container > .dropdown {
   display: flex;
-  gap: 10px;
+  gap: var(--space_small);;
   justify-content: center;
 }
 
-.dropdown > label {
+.input-container > .dropdown > label {
   font-size: 18px;
 }
 
-.chart-container {
+.dashboard-container > .chart-container {
   width: 100%;
   font-size: var(--h4_text);
-  /* border-left: 1px solid black; */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  height: 80vh;
+  border-radius: var(--space_small);;
+  box-shadow: 3px 12px 23px -2px rgba(0,0,0,0.3);
+  position: relative;
 }
 
-.chart-container > .loader {
+.dashboard-container > .chart-container > .loader {
   border: 8px solid #f3f3f3;
   border-radius: 50%;
-  border-top: 8px solid #282c34;
+  border-top: 8px solid var(--primary_color);
   animation: spin 2s linear infinite;
-  margin-top: 30%;
   width: 50px;
   height: 50px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.chart-container > .chart {
+.dashboard-container > .chart-container > .chart {
   width: 100%;
-  height: 80vh;
-  border-radius: 10px;
-  box-shadow: 3px 12px 23px -2px rgba(0,0,0,0.3);
+  height: 100%;
+}
+
+.dashboard-container > .chart-container > .chart > div {
+  border-radius: var(--space_small) !important;
 }
 
 .modal {
@@ -108,11 +115,11 @@
 
 .modal > .modal-content {
   font-size: 18px;
-  line-height: 20px;
+  line-height: var(--space_medium);
   max-width: 500px;
   position: relative;
   background-color: #fefefe;
-  padding: 30px 15px;
+  padding: var(--space_large) 15px;
   border: 1px solid #888;
   width: 80%;
   margin: auto;
@@ -121,28 +128,26 @@
   animation-duration: 0.4s;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: var(--space_medium);;
 }
 
 .modal > .modal-content > .modal-footer > button {
-font-size: 16px;
-    font-weight: 400;
-    padding: 10px 28px;
-    cursor: pointer;
-    transition-duration: 0.4s;
-    line-height: 1;
-    background: #282c34;
-    border-color: #282c34;
-    color: white;
-    border-radius: 5px;
+  font-size: 16px;
+  font-weight: 400;
+  padding: var(--space_small) 28px;
+  cursor: pointer;
+  transition-duration: 0.4s;
+  line-height: 1;
+  background: var(--primary_color);
+  border-color: var(--primary_color);
+  color: white;
+  border-radius: 5px;
 }
 
 @keyframes animatetop {
   from {transform:translateY(-300px); opacity:0}
   to {transform:translateY(0px); opacity:1}
 }
-
-
 
 @keyframes spin {
   0% { transform: rotate(0deg); }
@@ -154,10 +159,10 @@ font-size: 16px;
   .dashboard-container {
     flex-direction: row;
     align-items: unset;
-    gap: 20px;
+    gap: var(--space_medium);;
+    height: 80vh;
   }
-  .search-container {
+  .dashboard-container > .search-container {
     width: 40%;
-    /* height: 80vh; */
   }
 }

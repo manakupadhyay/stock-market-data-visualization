@@ -39,6 +39,7 @@ const Dashboard = () => {
       }
     } catch (error) {
       setIsLoading(false);
+      console.log(error)
       setModal({
         show: true,
         message: "Something went wrong! Please try again later.",

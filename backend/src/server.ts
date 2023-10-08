@@ -5,7 +5,7 @@ import routes from "./router/index";
 const app: Express = express();
 const PORT = process.env.PORT || 3001;
 
-var corsOptions = {
+const corsOptions = {
   origin: "https://stock-market-data-visualization-frontend.vercel.app",
   optionsSuccessStatus: 200,
 };

@@ -17,8 +17,6 @@ const Chart = ({ isLoading, stockData, chartContainerRef }: Props) => {
 
   useEffect(() => {
     if (
-      stockData &&
-      stockData.candles &&
       stockData.candles.length > 0 &&
       chartContainerRef &&
       chartContainerRef.current
@@ -80,7 +78,7 @@ const Chart = ({ isLoading, stockData, chartContainerRef }: Props) => {
   return (
     <div className="chart-container">
       {isLoading && <Loader />}
-      <div ref={chartContainerRef} className="chart" />
+      {!isLoading && <div ref={chartContainerRef} className="chart" />}
     </div>
   );
 };

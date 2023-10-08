@@ -31,7 +31,7 @@ const Search = ({ fetchData }: Props) => {
               key={inputValue.id}
               id={inputValue.id}
               selectedValue={
-                inputValue.id === "instrument" ? instrument : period
+                inputValue.id === UserInputKeys.INSTRUMENT ? instrument : period
               }
               displayName={inputValue.displayName}
               dropDownValues={inputValue.values}
