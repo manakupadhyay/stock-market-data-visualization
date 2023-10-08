@@ -6,7 +6,7 @@ const app: Express = express();
 const PORT = process.env.PORT || 3001;
 
 var corsOptions = {
-  origin: "http://localhost:3000",
+  origin: "https://stock-market-data-visualization-frontend.vercel.app",
   optionsSuccessStatus: 200,
 };
 
