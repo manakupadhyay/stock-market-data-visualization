@@ -14,6 +14,7 @@ interface Props {
 }
 const Chart = ({ isLoading, stockData, chartContainerRef }: Props) => {
   const chart = useRef<ReturnType<typeof createChart> | null>(null);
+  const resizeObserver = useRef<ResizeObserver | null>(null);
 
   useEffect(() => {
     if (
@@ -73,6 +74,34 @@ const Chart = ({ isLoading, stockData, chartContainerRef }: Props) => {
 
       chart.current.timeScale().fitContent();
     }
+  }, [stockData]);
+
+  useEffect(() => {
+    if (!chart.current) {
+      return;
+    }
+
+    resizeObserver.current = new ResizeObserver((entries) => {
+      const { width, height } = entries[0].contentRect;
+      if (chart.current) {
+        chart.current.applyOptions({ width, height });
+        setTimeout(() => {
+          if (chart.current) {
+            chart.current.timeScale().fitContent();
+          }
+        }, 0);
+      }
+    });
+
+    if (chartContainerRef.current) {
+      resizeObserver.current.observe(chartContainerRef.current);
+    }
+
+    return () => {
+      if (resizeObserver.current) {
+        resizeObserver.current.disconnect();
+      }
+    };
   }, [stockData]);
 
   return (
